@@ -35,8 +35,7 @@ class LangChainWikiRetriever(BaseTool):
         return True
 
     async def call(
-        self, parameters: dict, ctx: Any, **kwargs: Any
-    ) -> List[Dict[str, Any]]:
+        self, parameters: dict, ctx: Any, **kwargs: Any) -> List[Dict[str, Any]]:
         wiki_retriever = WikipediaRetriever()
         query = parameters.get("query", "")
         docs = wiki_retriever.get_relevant_documents(query)
@@ -53,7 +52,6 @@ class LangChainWikiRetriever(BaseTool):
             }
             for doc in documents
         ]
-
 
 class LangChainVectorDBRetriever(BaseTool):
     """

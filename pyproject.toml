@@ -103,6 +103,8 @@ optional = true
 [tool.poetry.group.community.dependencies]
 wolframalpha = "^5.0.0"
 torch = "^2.3.0"
+pinecone-client = {version = "^5.0.1", extras = ["grpc"]}
+sentence-transformers = "^3.0.1"
 
 [tool.poetry.group.local-model]
 optional = true

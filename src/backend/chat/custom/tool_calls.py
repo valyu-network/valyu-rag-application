@@ -54,14 +54,12 @@ async def _call_all_tools_async(
     deployment_model: BaseDeployment,
     ctx: Context,
 ) -> dict[str, str]:
-    tasks = [
-        _call_tool_async(ctx, db, tool_call, deployment_model)
-        for tool_call in tool_calls
-    ]
+
+    tasks = [_call_tool_async(ctx, db, tool_call, deployment_model) for tool_call in tool_calls]
     combined = asyncio.gather(*tasks)
     try:
         tool_results = await asyncio.wait_for(combined, timeout=TIMEOUT)
-        # Flatten a list of list of tool results
+        # Flatten a list of tool results
         return [n for m in tool_results for n in m]
     except asyncio.TimeoutError:
         raise HTTPException(

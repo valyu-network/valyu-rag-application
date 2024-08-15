@@ -2,6 +2,7 @@ from enum import StrEnum
 
 from community.tools import (
     ArxivRetriever,
+    ArxivConnector,
     Category,
     ClinicalTrials,
     ConnectorRetriever,
@@ -14,6 +15,7 @@ from community.tools import (
 
 class CommunityToolName(StrEnum):
     Arxiv = ArxivRetriever.NAME
+    ArxivConnector = ArxivConnector.NAME
     Connector = ConnectorRetriever.NAME
     Pub_Med = PubMedRetriever.NAME
     File_Upload_LlamaIndex = LlamaIndexUploadPDFRetriever.NAME
@@ -37,6 +39,22 @@ COMMUNITY_TOOLS = {
         error_message="ArxivRetriever is not available.",
         category=Category.DataLoader,
         description="Retrieves documents from Arxiv.",
+    ),
+    CommunityToolName.ArxivConnector: ManagedTool(
+        display_name="Arxiv Connector",
+        implementation=ArxivConnector,
+        parameter_definitions={
+            "query": {
+                "description": "Query for retrieval.",
+                "type": "str",
+                "required": True
+            }
+        },
+        is_visible=True,
+        is_available= ArxivConnector.is_available(),
+        error_message="ArxivConnector is not available",
+        category=Category.DataLoader,
+        description="Retrieves documents from an Arxiv Pinecone database."
     ),
     CommunityToolName.Connector: ManagedTool(
         display_name="Example Connector",
