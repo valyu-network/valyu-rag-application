@@ -15,12 +15,7 @@ TIMEOUT = 300
 logger = LoggerFactory().get_logger()
 
 
-async def async_call_tools(
-    chat_history: List[Dict[str, Any]],
-    deployment_model: BaseDeployment,
-    ctx: Context,
-    **kwargs: Any,
-) -> list[dict[str, str]]:
+async def async_call_tools(chat_history: List[Dict[str, Any]], deployment_model: BaseDeployment, ctx: Context, **kwargs: Any,) -> list[dict[str, str]]:
     logger = ctx.get_logger()
 
     tool_results = []

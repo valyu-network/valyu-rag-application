@@ -54,7 +54,7 @@ COMMUNITY_TOOLS = {
         is_available= ArxivConnector.is_available(),
         error_message="ArxivConnector is not available",
         category=Category.DataLoader,
-        description="Retrieves documents from an Arxiv Pinecone database."
+        description="Retrieves documents from Arxive."
     ),
     CommunityToolName.Connector: ManagedTool(
         display_name="Example Connector",

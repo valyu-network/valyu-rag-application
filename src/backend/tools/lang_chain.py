@@ -69,8 +69,7 @@ class LangChainVectorDBRetriever(BaseTool):
         return cls.COHERE_API_KEY is not None
 
     async def call(
-        self, parameters: dict, ctx: Any, **kwargs: Any
-    ) -> List[Dict[str, Any]]:
+        self, parameters: dict, ctx: Any, **kwargs: Any) -> List[Dict[str, Any]]:
         cohere_embeddings = CohereEmbeddings(cohere_api_key=self.COHERE_API_KEY)
 
         # Load text files and split into chunks

@@ -50,6 +50,10 @@ services:
       args:
         INSTALL_COMMUNITY_DEPS: true
       dockerfile: ./src/backend/Dockerfile
+    environment:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_DEFAULT_REGION:
     develop:
       watch:
         - action: sync

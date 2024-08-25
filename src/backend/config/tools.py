@@ -125,7 +125,7 @@ ALL_TOOLS = {
         is_available=LangChainWikiRetriever.is_available(),
         error_message="LangChainWikiRetriever not available.",
         category=Category.DataLoader,
-        description="Retrieves documents from Wikipedia using LangChain.",
+        description="Retrieves documents from Wikipedia.",
     ),
     ToolName.Calculator: ManagedTool(
         display_name="Calculator",
