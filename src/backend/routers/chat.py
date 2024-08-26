@@ -84,6 +84,8 @@ async def chat_stream(
         ctx,
     ) = process_chat(session, chat_request, request, ctx)
 
+    chat_request.preamble = "If you can't find anything specific, stop and respond with 'I do not have enough background information to answer this question, I need more relevant context.'."
+
     return EventSourceResponse(
         generate_chat_stream(
             session,

@@ -14,8 +14,8 @@ class ArxivConnector(BaseTool):
         self.bucket_name = 'valyu-arxiv-articles'
         self.model = SentenceTransformer('src/community/other_models/Alibaba-NLP/gte-large-en-v1.5', trust_remote_code=True)
         self.index = (Pinecone(api_key= os.getenv("PINECONE_API_KEY"))).Index(os.getenv("PINECONE_INDEX"))
-        self.top_sensitivity = 0.4
-        self.bottom_sensitivity = 0.3
+        self.top_sensitivity = 0.5
+        self.bottom_sensitivity = 0.65
 
     @classmethod
     def is_available(cls) -> bool:
@@ -77,7 +77,7 @@ class ArxivConnector(BaseTool):
         if not final_result:
             return [
                 {
-                    'text': "No matches found"
+                    'text': "No matches found."
                 }
             ]
         else:
